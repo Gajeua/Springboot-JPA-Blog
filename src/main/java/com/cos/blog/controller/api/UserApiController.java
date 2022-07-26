@@ -20,8 +20,6 @@ public class UserApiController {
 	@Autowired  // DI한다.
 	private UserService userService;
 	
-	@Autowired
-	private BCryptPasswordEncoder encode;
 	
 	// 전통적인 로그인 방식을 위한 DI
 //	@Autowired  // DI한다.

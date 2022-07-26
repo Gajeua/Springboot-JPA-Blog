@@ -13,10 +13,14 @@ public class BoardController {
 
 	// http://localhost:8000/blog
 	@GetMapping("/")
-	public String index(@AuthenticationPrincipal PrincipalDetail principal) {
+	public String index() {
 		
 		// yml파일로 경로를 설정해서  /WEB-INF/views/index.jsp 으로 이동
-		System.out.print("로그인 사용자 아이디 : " +principal);
 		return "index";
+	}
+	
+	@GetMapping("/board/saveForm")
+	public String saveForm() {
+		return "board/saveForm";
 	}
 }
