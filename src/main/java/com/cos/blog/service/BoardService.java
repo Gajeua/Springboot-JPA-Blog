@@ -2,6 +2,8 @@ package com.cos.blog.service;
 
 
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -27,4 +29,9 @@ public class BoardService {
 		board.setUser(user);
 		boardRepository.save(board);
 	}
+	
+	public List<Board> 글목록(){
+		return boardRepository.findAll();
+	}
+	
 }
