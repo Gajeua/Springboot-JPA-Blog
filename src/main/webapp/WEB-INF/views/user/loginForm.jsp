@@ -2,7 +2,7 @@
 
 <%@ include file="../layout/header.jsp"%>
 
-<div class="container">
+<div id="Main"  class="container">
 
     <!-- input 태그에 name = "value" 을 추가 -->
 	<form action ="/auth/loginProc" method = "post">
