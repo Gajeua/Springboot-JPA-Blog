@@ -1,7 +1,10 @@
 package com.cos.blog.controller;
 
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+
+import com.cos.blog.config.auth.PrincipalDetail;
 
 @Controller
 public class UserController {
@@ -24,6 +27,13 @@ public class UserController {
 		
 		// WEB-INF/views/user/loginForm.jsp
 		return "user/loginForm";
+	}
+	
+	@GetMapping("/user/updateForm")
+	public String updateForm() {
+		
+		// WEB-INF/views/user/updateForm.jsp
+		return "user/updateForm";
 	}
 
 }

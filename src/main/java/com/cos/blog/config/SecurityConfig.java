@@ -24,6 +24,7 @@ public class SecurityConfig {  //extends WebSecurityConfigurerAdapter
 	@Autowired
 	private PrincipalDetailService principalDetailService;
 	
+	
 	@Bean  // IoC가 돼서 리턴하는 객체를 스프링이 관리한다.
 	public BCryptPasswordEncoder encodePWD() {
 		return new BCryptPasswordEncoder();
