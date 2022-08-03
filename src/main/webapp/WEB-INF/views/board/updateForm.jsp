@@ -2,7 +2,7 @@
 
 <%@ include file="../layout/header.jsp"%>
 
-<div class="container">
+<div id="Main"   class="container">
 
 	<form>
 		<input type = "hidden" id= "id" value="${board.id }"/>

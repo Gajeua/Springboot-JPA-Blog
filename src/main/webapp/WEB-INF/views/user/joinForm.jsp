@@ -2,7 +2,7 @@
 
 <%@ include file="../layout/header.jsp"%>
 
-<div class="container">
+<div id="Main"  class="container">
 	<form>
 		<div class="form-group">
 			<label for="username">Username:</label>

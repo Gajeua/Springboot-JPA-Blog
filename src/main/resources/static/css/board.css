@@ -1,0 +1,17 @@
+@charset "UTF-8";
+#Main{
+	position: relative;
+	margin: 0 auto;
+	padding: 120px 0 120px;
+}
+#card{
+	margin:auto;
+}
+footer{
+	position:relative;
+	bottom:0;
+	width: 100%;
+	padding : 2rem 1rem;
+	background-color: #e9ecef;
+	text-align: center;
+}
