@@ -13,6 +13,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OrderBy;
 
 import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.CreationTimestamp;
@@ -50,6 +51,7 @@ public class Board {
 	
 	@OneToMany(mappedBy = "board", fetch = FetchType.EAGER)  //테이블에 생성하는 FK키가 아닌 Select할때 Join을 위해 mappedBy로 Reply의 board 사용.
 	@JsonIgnoreProperties({"board"})  // 무한참조 방지 - (Board에서 Reply를 파싱할 때 Reply 안에있는 "board"는 다시 참조하지 않는다.)
+	@OrderBy("id desc")
 	private List<Reply> reply;
 	
 	@CreationTimestamp  // 데이터가 insert 혹은 update 될때 시간이 들어감.

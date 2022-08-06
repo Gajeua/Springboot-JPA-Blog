@@ -10,6 +10,9 @@ let index = {
 		$("#btn-update").on("click", ()=> // function(){}대신 ()=>{}를 사용하는 이유는 this를 바인딩 하기 위해서!
 			this.update()
 		);
+		$("#btn-reply-save").on("click", ()=> // function(){}대신 ()=>{}를 사용하는 이유는 this를 바인딩 하기 위해서!
+			this.replySave()
+		);
 	},
 		
 
@@ -66,6 +69,28 @@ let index = {
 		}).done(function(resp){ //  javascript 오브젝트로 변경된 응답 값이 파라미터에 저장
 			alert("글 수정 완료.");
 			location.href="/";
+		}).fail(function(error){
+			alert(JSON.stringify(error));
+		});  
+		
+	},
+	
+	replySave: function() {
+		let id = $("#boardId").val();
+		let data = {
+			content: $("#reply-content").val()
+		};
+		
+		$.ajax({
+			type : "POST",
+			url : `/api/board/${id}/reply`,
+			data : JSON.stringify(data), // http body 데이터
+			contentType : "application/json; charset=utf-8",  //MIME 타입
+			dataType : "json" // 요청을 서버로 해서 응답이 왔을때  기본적으론 문자열이 응답 => 생긴게 JSON이라면 javascript 오브젝트로 변경.
+		}).done(function(resp){ //  javascript 오브젝트로 변경된 응답 값이 파라미터에 저장
+			 alert("댓글 작성 완료.");
+			// location.href=`/board/${id}`;
+			$("#replyList").load(location.href+" #replyList");
 		}).fail(function(error){
 			alert(JSON.stringify(error));
 		});  
