@@ -11,6 +11,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.cos.blog.dto.ReplySaveRequestDto;
 import com.cos.blog.model.Board;
 import com.cos.blog.model.Reply;
 import com.cos.blog.model.RoleType;
@@ -28,6 +29,9 @@ public class BoardService {
 	
 	@Autowired
 	private ReplyRepository replyRepository;
+	
+	@Autowired
+	private UserRepository userRepository;
 	
 	
 	@Transactional // 하나의 트랜잭션으로 묶여서 전체가 실행. 성공하면 commit 실패하면 rollback
@@ -67,16 +71,8 @@ public class BoardService {
 	}
 	
 	@Transactional
-	public void 댓글쓰기(int boardId, Reply requestReply, User user) {
-		
-		Board board = boardRepository.findById(boardId).orElseThrow(
-				()->{return new IllegalArgumentException("댓글 쓰기 실패 : 게시글 ID를 찾을 수 없습니다.");
-				});
-		
-		requestReply.setUser(user);
-		requestReply.setBoard(board);
-		
-		replyRepository.save(requestReply);
+	public void 댓글쓰기(ReplySaveRequestDto replySaveRequestDto) {
+	replyRepository.mSave(replySaveRequestDto.getUserId(), replySaveRequestDto.getBoardId(), replySaveRequestDto.getContent());
 	}
 	
 }
