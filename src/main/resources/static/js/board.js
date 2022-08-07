@@ -76,14 +76,15 @@ let index = {
 	},
 	
 	replySave: function() {
-		let id = $("#boardId").val();
 		let data = {
+			userId: $("#userId").val(),
+			boardId : $("#boardId").val(),
 			content: $("#reply-content").val()
 		};
 		
 		$.ajax({
 			type : "POST",
-			url : `/api/board/${id}/reply`,
+			url : `/api/board/${data.boardId}/reply`,
 			data : JSON.stringify(data), // http body 데이터
 			contentType : "application/json; charset=utf-8",  //MIME 타입
 			dataType : "json" // 요청을 서버로 해서 응답이 왔을때  기본적으론 문자열이 응답 => 생긴게 JSON이라면 javascript 오브젝트로 변경.
@@ -91,6 +92,7 @@ let index = {
 			 alert("댓글 작성 완료.");
 			// location.href=`/board/${id}`;
 			$("#replyList").load(location.href+" #replyList");
+			$("#textarea").load(location.href+" #textarea");
 		}).fail(function(error){
 			alert(JSON.stringify(error));
 		});  

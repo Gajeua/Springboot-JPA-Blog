@@ -28,8 +28,9 @@
 
 	<div class="card">
 		<form>
+			<input type="hidden" id="userId" value="${principal.user.id}" />
 			<input type="hidden" id="boardId" value="${board.id}" />
-			<div class="card-body">
+			<div id= "textarea" class="card-body">
 			<textarea id= "reply-content" class="form-control" rows="1"></textarea>
 		</div>
 		<div class="card-footer">
