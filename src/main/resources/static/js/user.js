@@ -30,8 +30,12 @@ let index = {
 			contentType : "application/json; charset=utf-8",  //MIME 타입
 			dataType : "json" // 요청을 서버로 해서 응답이 왔을때  기본적으론 문자열이 응답 => 생긴게 JSON이라면 javascript 오브젝트로 변경.
 		}).done(function(resp){ //  javascript 오브젝트로 변경된 응답 값이 파라미터에 저장
-			alert("회원가입 완료되었습니다.");
-			location.href="/";
+			if(resp.status === 500){
+				alert("회원가입에 실패하였습니다.");
+			}else{
+				alert("회원가입 완료되었습니다.");
+				location.href="/";
+			}
 		}).fail(function(error){
 			alert(JSON.stringify(error));
 		});  // ajax 통신을 이용해서 3개의 파라미터를 JSON으로 변경하여 insert 요청

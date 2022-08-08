@@ -3,6 +3,7 @@ package com.cos.blog.model;
 import java.sql.Timestamp;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -49,7 +50,7 @@ public class Board {
 	@JoinColumn(name = "userId")
 	private User user; // DB는 오브젝트를 저장할 수 없다. FK, 자바는 오브젝트를 저장할 수 있다.
 	
-	@OneToMany(mappedBy = "board", fetch = FetchType.EAGER)  //테이블에 생성하는 FK키가 아닌 Select할때 Join을 위해 mappedBy로 Reply의 board 사용.
+	@OneToMany(mappedBy = "board", fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)  //테이블에 생성하는 FK키가 아닌 Select할때 Join을 위해 mappedBy로 Reply의 board 사용.
 	@JsonIgnoreProperties({"board"})  // 무한참조 방지 - (Board에서 Reply를 파싱할 때 Reply 안에있는 "board"는 다시 참조하지 않는다.)
 	@OrderBy("id desc")
 	private List<Reply> reply;
